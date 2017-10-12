@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html ng-app>
+    <head>
+        <title>Login with FB app</title>
+        <meta charset="utf-8">
+        <meta name="description"  content="contact list app">
+        <meta name="keywords" content="MEAN app, Contact list app">
+        <meta name="author" content="PanKaj Agham">
+        <meta name="viewport" content="width=device-width initial-scale=1.0">
+
+        <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js"></script>
+
+    <style>
+            .container{
+                background:#e6e6ff;
+            }
+            h1{
+                text-align: center;
+                font-size: 40px;
+                
+            }
+            .table{
+                background: #e6ffff;
+            }
+            #main{
+                margin-left: 300px;
+                margin-bottom: 100px;
+                margin-top: 100px;
+            }
+            #address{
+                font-size: 20px;
+            }
+            #pic{
+                margin: 20px;
+                align-items: center;
+            }
+            #addressDetail{
+                margin-left: 500px;
+            }
+        </style>
+    </head>
+    <body>
+      <div class="container " >
+        <div> 
+        <div id="main" ng-controller="firstController">
+            <button ng-click="loginWithFB()" class="btn btn-default">Login with Facebook</button><br>
+            <img id='pic' src="{{fb_image}}" alt='FB picture' width="300px" height="300px"/>
+            <h3>User Name: {{facebook.username}}</h3>
+            <h3>Email: {{facebook.email}}</h3>
+            <h3>Gender: {{facebook.gender}}</h3>
+            
+
+            <div id="address">
+                    <label>Address</label><br>
+            <textarea name="" id="textAddressId" ng-model="textAddress" cols="30" rows="3"></textarea><br/>
+                <label for="country">Country *</label>
+                <select id="country" ng-model="countrySrc" ng-options="country for (country, states) in countries" ng-change="getCountry()">
+                  <option value=''>Select</option>
+                </select> <br/>
+                <label for="state">State *</label>
+                <select id="state" ng-disabled="!countrySrc" ng-model="stateSrc" ng-options="state for (state,city) in countrySrc" ng-change="getState()">
+                  <option value=''>Select</option>
+                </select> </br>
+                <label for="city">City *</label>
+                <select id="city" ng-disabled="!countrySrc || !stateSrc" ng-model="city" ng-options="city for city in stateSrc">
+                  <option value=''>Select</option>
+                </select><br/>
+                <button ng-click="saveAddress()" class="btn btn-default">Save Address</button>
+                <button ng-click="getAddress()" class="btn btn-default">View Address</button>
+                <button ng-click="reloadPage()" class="btn btn-default">Logout</button>
+                <div>{{message}}</div>
+
+                <div id="addressDetail">
+                   <label > User Address:</label> <br/>
+                   (first Login to see User's Address)
+                   <p>{{fullAddress}}<br/>
+                    {{country}}<br/>
+                    {{state}}<br/>
+                    {{city}}
+                    </p>
+                    
+                </div>
+            </div>
+        </div>
+       
+         <script src="controllers/controller.js"></script>  
+         <script src="controllers/app.js" type="text/javascript"></script>  
+     </div>
+    </body>
+</html>
