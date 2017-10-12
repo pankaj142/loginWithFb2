@@ -7,7 +7,7 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 
 var mongoose =require('mongoose');
-mongoose.connect('mongodb://localhost:27017/test1');
+mongoose.connect('https://guarded-eyrie-67665.herokuapp.com/:27017/test1');
 
 //schema 
 var PostSchema = mongoose.Schema({
