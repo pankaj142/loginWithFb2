@@ -3,7 +3,7 @@
 // login with Fb
   window.fbAsyncInit = function() {
         FB.init({
-            appId            : '838133946361559',
+            appId            : 'fb app id',
             autoLogAppEvents : true,
             xfbml            : true,
             version          : 'v2.10',
